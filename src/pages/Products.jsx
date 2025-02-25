@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { ProductWrapper } from '../wrappers/product'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchProducts } from '../features/products/productsSlice'
+import Navbar from '../components/Navbar'
 
 const Products = () => {
     const dispatch = useDispatch()
@@ -23,7 +24,8 @@ const Products = () => {
     ]
 
     return (
-        <>
+        <>  
+            <Navbar/>
             <ProductWrapper>
                 <h2>Product List</h2>
                 <ul>

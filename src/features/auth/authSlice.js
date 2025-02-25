@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const LoginUser = createAsyncThunk('auth/loginUser', async (userCredential , {rejectWithValue}) => {
     try {
-        const response = await axios.post(`https://dummyjson.com/docs/auth` , userCredential);
+        const response = await axios.post(`https://dummyjson.com/auth/login` , userCredential);
         console.log(response.data)
         const {token , ...user} = response.data;
         localStorage.setItem('JWTtoken', token)

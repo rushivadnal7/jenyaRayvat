@@ -3,6 +3,7 @@ import { LoginWrapper } from '../wrappers/login'
 import { useDispatch } from 'react-redux'
 import { LoginUser } from '../features/auth/authSlice'
 import { useNavigate } from 'react-router-dom'
+import Navbar from '../components/Navbar'
 
 const Login = () => {
     const [email, setEmail] = useState('')
@@ -18,21 +19,24 @@ const Login = () => {
 
         console.log(email, password)
         let userCredential = {
-            email, password
+            username:email, password
         }
         dispatch(LoginUser(userCredential)).then((result) => {
-            console.log(result)
-            if (result.payload) {
-                console.log('success')
-                setEmail('')
-                setPassword('')
-                navigate('/')
+            if (LoginUser.fulfilled.match(result)) { 
+                console.log('Login success');
+                setEmail('');
+                setPassword('');
+                navigate('/');
+            } else {
+                console.error('Login failed:', result.error.message);
             }
-        })
+        });
+        
     }
 
     return (
         <>
+            <Navbar/>
             <LoginWrapper>
                 <div className="container">
                     <h1> Login Page </h1>
@@ -40,7 +44,7 @@ const Login = () => {
                         <label>email </label>
                         <input type="text" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                         <label>password </label>
-                        <input type="text" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <input type="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                         <button>login</button>
                     </form>
                 </div>
