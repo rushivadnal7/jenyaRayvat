@@ -5,9 +5,9 @@ export const LoginUser = createAsyncThunk('auth/loginUser', async (userCredentia
     try {
         const response = await axios.post(`https://dummyjson.com/auth/login` , userCredential);
         console.log(response.data)
-        const {token , ...user} = response.data;
-        localStorage.setItem('JWTtoken', token)
-        return {user, token}
+        const {accessToken , ...user} = response.data;
+        localStorage.setItem('JWTtoken', accessToken)
+        return {user, accessToken}
     } catch (error) {
         return rejectWithValue(error.response.data.message)
     }

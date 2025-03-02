@@ -12,6 +12,10 @@ export const ProductWrapper = styled.section`
     width: 100vw;
     height: 100vh;
     text-align: center;
+
+    h2{
+        height: 5%;
+    }
     ul{
         width: 100%;
         height: 80%;
@@ -19,6 +23,7 @@ export const ProductWrapper = styled.section`
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        overflow-y: scroll;
 
 
         li{
@@ -26,22 +31,11 @@ export const ProductWrapper = styled.section`
             width: max-content;
             height: max-content;
             list-style: none;
-            background-color: beige;
+            background-color: yellow;
             padding: 1rem;
             margin: 1rem;
             border-radius: 15px;
             animation: ${fadeIn} 2s ease-in-out;
-
-            img{
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: -100;
-                width: 100%;
-                height: 100%;
-                border-radius: 15px;
-                opacity: 0.5;
-            }
         }
     }
 `

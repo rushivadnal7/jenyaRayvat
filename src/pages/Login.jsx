@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { LoginUser } from '../features/auth/authSlice'
 import { useNavigate } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import { toast } from 'react-toastify'
 
 const Login = () => {
     const [email, setEmail] = useState('')
@@ -26,8 +27,10 @@ const Login = () => {
                 console.log('Login success');
                 setEmail('');
                 setPassword('');
+                toast.success('login successful')
                 navigate('/');
             } else {
+                toast.error(`login ${result.error.message}`)
                 console.error('Login failed:', result.error.message);
             }
         });

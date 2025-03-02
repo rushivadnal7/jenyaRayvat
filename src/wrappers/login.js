@@ -30,6 +30,11 @@ export const LoginWrapper = styled.section`
             align-items: center;
             gap: 1rem;
 
+            input{
+                padding: 0.3rem;
+                width: 200px;
+            }
+
             button{
                 padding: 0.4rem 2rem ;
                 background-color: aliceblue;
